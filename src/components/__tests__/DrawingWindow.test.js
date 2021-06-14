@@ -25,3 +25,18 @@ test("should render DrawingWindow component with text 'Triangle is equilateral'"
   expect(drawingWindowElement).toBeInTheDocument();
   expect(drawingWindowElement).toHaveTextContent("Triangle is equilateral");
 });
+
+test("should render DrawingWindow component with text 'Triangle is isosceles'", () => {
+  const sides = { sideA: 5, sideB: 5, sideC: 1 };
+  render(
+    <DrawingWindow
+      sideValueA={sides.sideA}
+      sideValueB={sides.sideB}
+      sideValueC={sides.sideC}
+      submitted={true}
+    />
+  );
+  const drawingWindowElement = screen.getByTestId("drawingWindow-1");
+  expect(drawingWindowElement).toBeInTheDocument();
+  expect(drawingWindowElement).toHaveTextContent("Triangle is isosceles");
+});

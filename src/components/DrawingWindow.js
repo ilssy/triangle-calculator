@@ -21,10 +21,19 @@ const StyledWindow = styled.div`
 `;
 
 const DrawingWindow = ({ sideValueA, sideValueB, sideValueC, submitted }) => {
+  const isEquilateral = (sideA, sideB, sideC) => {
+    return sideA === sideB && sideA === sideC;
+  };
+
+  const isIsosceles = (sideA, sideB, sideC) => {
+    return sideA === sideB || sideA === sideC || sideB === sideC;
+  };
   return (
     <StyledWindow data-testid="drawingWindow-1">
-      {submitted && sideValueA === sideValueB && sideValueA === sideValueC ? (
+      {submitted && isEquilateral(sideValueA, sideValueB, sideValueC) ? (
         <div>Triangle is equilateral</div>
+      ) : submitted && isIsosceles(sideValueA, sideValueB, sideValueC) ? (
+        <div>Triangle is isosceles</div>
       ) : null}
     </StyledWindow>
   );
