@@ -1,4 +1,9 @@
-# Getting Started with Create React App
+# Triangle Calculator App
+
+Triangle Calculator application lets user input three numbers to find out whether these three inputs create a valid equilateral, isosceles or scalene triangle.
+
+Built with React.
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
