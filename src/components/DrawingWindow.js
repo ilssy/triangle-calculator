@@ -21,6 +21,13 @@ const StyledWindow = styled.div`
 `;
 
 const DrawingWindow = ({ sideValueA, sideValueB, sideValueC, submitted }) => {
+  const isValid = (sideA, sideB, sideC) => {
+    if (sideA === "0" || sideB === "0" || sideC === "0") return false;
+    return (
+      sideA + sideB > sideC && sideA + sideC > sideB && sideB + sideC > sideA
+    );
+  };
+
   const isEquilateral = (sideA, sideB, sideC) => {
     return sideA === sideB && sideA === sideC;
   };
@@ -31,12 +38,18 @@ const DrawingWindow = ({ sideValueA, sideValueB, sideValueC, submitted }) => {
 
   return (
     <StyledWindow data-testid="drawingWindow-1">
-      {submitted && isEquilateral(sideValueA, sideValueB, sideValueC) ? (
+      {submitted &&
+      isValid(sideValueA, sideValueB, sideValueC) &&
+      isEquilateral(sideValueA, sideValueB, sideValueC) ? (
         <div>Triangle is equilateral</div>
-      ) : submitted && isIsosceles(sideValueA, sideValueB, sideValueC) ? (
+      ) : submitted &&
+        isValid(sideValueA, sideValueB, sideValueC) &&
+        isIsosceles(sideValueA, sideValueB, sideValueC) ? (
         <div>Triangle is isosceles</div>
-      ) : submitted ? (
+      ) : submitted && isValid(sideValueA, sideValueB, sideValueC) ? (
         <div>Triangle is scalene</div>
+      ) : submitted ? (
+        <div>Is not possible to calculate this kind of triangle</div>
       ) : null}
     </StyledWindow>
   );
