@@ -28,12 +28,15 @@ const DrawingWindow = ({ sideValueA, sideValueB, sideValueC, submitted }) => {
   const isIsosceles = (sideA, sideB, sideC) => {
     return sideA === sideB || sideA === sideC || sideB === sideC;
   };
+
   return (
     <StyledWindow data-testid="drawingWindow-1">
       {submitted && isEquilateral(sideValueA, sideValueB, sideValueC) ? (
         <div>Triangle is equilateral</div>
       ) : submitted && isIsosceles(sideValueA, sideValueB, sideValueC) ? (
         <div>Triangle is isosceles</div>
+      ) : submitted ? (
+        <div>Triangle is scalene</div>
       ) : null}
     </StyledWindow>
   );
