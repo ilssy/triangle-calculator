@@ -37,7 +37,7 @@ const Input = styled.input`
 `;
 
 const TriangleSideInputField = (props) => {
-  const { sideLetter } = props;
+  const { sideLetter, name, type, value, onChange } = props;
   return (
     <SideTextOnInput>
       <Label
@@ -46,7 +46,14 @@ const TriangleSideInputField = (props) => {
       >
         {sideLetter} side
       </Label>
-      <Input name="number" type="number" placeholder="5" />
+      <Input
+        name={name}
+        type={type}
+        value={value}
+        onChange={onChange}
+        required
+        placeholder="5"
+      />
     </SideTextOnInput>
   );
 };

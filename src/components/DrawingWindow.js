@@ -20,10 +20,12 @@ const StyledWindow = styled.div`
   background-size: 1em 1em;
 `;
 
-const DrawingWindow = () => {
+const DrawingWindow = ({ sideValueA, sideValueB, sideValueC, submitted }) => {
   return (
     <StyledWindow data-testid="drawingWindow-1">
-      Equilateral Triangle
+      {submitted && sideValueA === sideValueB && sideValueA === sideValueC ? (
+        <div>Triangle is equilateral</div>
+      ) : null}
     </StyledWindow>
   );
 };
